@@ -83,14 +83,14 @@
         </div>
 
         <div class="section__col">
-          <div class="section__poster-container">
-            <img class="section__poster" src="/static/main-image.png" >
+          <div class="poster">
+            <img class="poster__image" src="/static/main-image.png" >
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section container features">
+    <section class="features container">
       <div class="features__item">
         <img class="features__image" src="/static/feature-one.png">
         <div class="features__info">
@@ -118,6 +118,50 @@
           <div class="features__description">
             Open a commercial-grade current account from anywhere
           </div>
+      </div>
+    </section>
+
+    <section class="gallery container">
+      <div class="gallery__content" id="gallery" style="transform: translateX(0px);">
+        <div class="gallery__item" id="item">
+          <div class="gallery__info">
+            <span class="icon icon__druk icon_white"></span>
+            <div class="gallery__text">
+              “Join a community of industry leading professionals. Join a community of industry leading professionals.“
+            </div>
+            <div class="gallery__author">Laura Paula</div>
+            <div class="gallery__position">Director @Company</div>
+  
+            <div class="gallery__bullets">
+              <span class="gallery__bullet gallery__bullet_active"></span>
+              <span class="gallery__bullet" id="bullet" data-index="1"></span>
+            </div>
+          </div>
+  
+          <div class="gallery__image poster">
+            <img class="poster__image" src="/static/gallery.png">
+          </div>
+        </div>
+
+        <div class="gallery__item">
+          <div class="gallery__image poster">
+            <img class="poster__image" src="/static/gallery.png">
+          </div>
+
+          <div class="gallery__info">
+            <span class="icon icon__druk icon_white"></span>
+            <div class="gallery__text">
+              “Join a community of industry leading professionals. Lorem ipsum!“
+            </div>
+            <div class="gallery__author">Paula Laura</div>
+            <div class="gallery__position">Counter @Company</div>
+
+            <div class="gallery__bullets">
+              <span class="gallery__bullet" id="bullet" data-index="0"></span>
+              <span class="gallery__bullet gallery__bullet_active"></span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
