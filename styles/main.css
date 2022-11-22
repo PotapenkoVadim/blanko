@@ -103,8 +103,14 @@ body { font-family: 'Roboto', sans-serif; font-size: 16px; box-sizing: border-bo
 .icon__close { -webkit-mask-image: url(../static/close.svg); }
 .icon__filled-star { -webkit-mask-image: url(../static/filled-star.svg); width: 20px; height: 20px; }
 .icon__druk { -webkit-mask-image: url(../static/druk-logo.svg); width: 100px; height: 20px; }
+.icon__insta { -webkit-mask-image: url(../static/insta.svg); width: 48px; height: 48px; }
+.icon__twitter { -webkit-mask-image: url(../static/twitter.svg); width: 48px; height: 48px; }
+.icon__facebook { -webkit-mask-image: url(../static/facebook.svg); width: 48px; height: 48px; }
+.icon__webflow { -webkit-mask-image: url(../static/webflow.svg); width: 89px; height: 23px; }
+.icon__veljko { -webkit-mask-image: url(../static/veljko.svg); width: 46px; height: 24px; }
 .icon_white { background-color: var(--white-color); }
 .icon_black { background-color: var(--black-color); }
+.icon_coral { background-color: var(--coral-color); }
 
 .button { border: none; outline: none; padding: 15px 35px; border-radius: 6px; font-size: 1.125rem; font-weight: 700; transition: all 0.3s ease-out;  }
 .button__block { display: block; width: 100%; }
@@ -113,6 +119,16 @@ body { font-family: 'Roboto', sans-serif; font-size: 16px; box-sizing: border-bo
 .button_black { background-color: var(--black-color); color: var(--white-color); }
 .button_white { background-color: var(--white-color); color: var(--black-color); }
 .button_coral { background-color: var(--coral-color); color: var(--black-color); }
+
+.footer { background-color: var(--black-color); color: var(--white-color); }
+.footer__content { padding-top: 60px; padding-bottom: 30px; }
+.footer__top { border-bottom: 1px solid var(--gray-divider-color); }
+.footer__bottom { margin-top: 30px; display: flex; justify-content: space-between; }
+.footer__row { display: flex; justify-content: space-between; align-items: center; }
+.footer__list { list-style: none; margin: 0; padding: 0; display: flex; gap: 16px; margin: 90px 0 30px; }
+.footer__link { color: var(--white-color); text-decoration: none; }
+.footer__link:hover { text-decoration: underline; }
+.footer__text { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
 
 @media (max-width: 1024px) {
   .header { width: 100%; overflow: visible; padding: 15px 0; }
@@ -147,4 +163,9 @@ body { font-family: 'Roboto', sans-serif; font-size: 16px; box-sizing: border-bo
   .gallery__text { padding: 0 12px; }
   .form { padding: 25px 15px; }
   .sign-up__col { padding: 0 10px; }
+  .footer__row { flex-direction: column; gap: 15px; }
+  .footer__content { padding-top: 20px; padding-bottom: 20px; }
+  .footer__list { margin: 20px 0 10px; gap: 8px; }
+  .footer__link { font-size: 0.8rem; }
+  .footer__bottom { flex-direction: column; align-items: center; gap: 10px; }
 }
