@@ -38,6 +38,7 @@ body { font-family: 'Roboto', sans-serif; font-size: 16px; }
 .section-coral { background-color: var(--coral-color); }
 .section__content { display: flex; }
 .section__col { flex: 1; }
+.section__col > .poster { max-width: 400px; left: 25%; }
 .section__title {text-align: center; font-size: 4.5rem; margin: 200px 0 30px 0; padding: 0 20px; }
 .section__description { text-align: center; font-size: 1.12rem; margin-bottom: 20px; padding: 0 20px; }
 .section__action { display: flex; justify-content: center; gap: 8px; }
@@ -98,6 +99,8 @@ body { font-family: 'Roboto', sans-serif; font-size: 16px; }
 
   .section__content { flex-direction: column; }
   .section__review { margin: 80px 0 80px; }
+  .section__title { margin-top: 95px; }
+  .section__col > .poster { display: none; }
 
   .poster { min-height: 650px; }
 
