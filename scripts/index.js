@@ -95,7 +95,6 @@ function debounce(fn, timeout = 250) {
 }
 
 /* ### Burger menu ### */
-const GALLERY_TIME_DELAY = 12500;
 const burgerMenu = new HTMLElement('burgerMenu');
 const closeMenu = new HTMLElement('closeMenu');
 const headerList = new HTMLElement('headerList');
@@ -104,6 +103,7 @@ burgerMenu.handleClick(() => headerList.toggleClassStyle('header__list-visible')
 closeMenu.handleClick(() => headerList.removeClassStyle('header__list-visible'));
 
 /* ### Gallery ### */
+const GALLERY_TIME_DELAY = 12500;
 const gallery = new Gallery('gallery');
 const rightBullet = new Bullet('rightBullet', gallery);
 const leftBullet = new Bullet('leftBullet', gallery);
