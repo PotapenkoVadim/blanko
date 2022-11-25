@@ -1,0 +1,10 @@
+.review {
+  &__star-rate { display: flex; gap: 2px; justify-content: center; }
+  &__text { text-align: center; margin: 25px 0 15px; padding: 0 130px; font-size: 1.25rem; font-weight: 700; }
+  &__info { text-align: center; }
+  &__reviers-count { font-size: 0.9rem; color: $dark; }
+
+  @media (max-width: $mobile) {
+    .review__text { padding: 0; }
+  }
+}

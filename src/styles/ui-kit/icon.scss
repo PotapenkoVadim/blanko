@@ -1,0 +1,16 @@
+.icon { display: block; -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; width: 30px; height: 30px;
+  &__arrow-down { -webkit-mask-image: url(../static/arrow-down.svg); width: 10px; height: 10px; }
+  &__burger { -webkit-mask-image: url(../static/burger-menu.svg); }
+  &__close { -webkit-mask-image: url(../static/close.svg); }
+  &__filled-star { -webkit-mask-image: url(../static/filled-star.svg); width: 20px; height: 20px; }
+  &__druk { -webkit-mask-image: url(../static/druk-logo.svg); width: 100px; height: 20px; }
+  &__insta { -webkit-mask-image: url(../static/insta.svg); width: 48px; height: 48px; }
+  &__twitter { -webkit-mask-image: url(../static/twitter.svg); width: 48px; height: 48px; }
+  &__facebook { -webkit-mask-image: url(../static/facebook.svg); width: 48px; height: 48px; }
+  &__webflow { -webkit-mask-image: url(../static/webflow.svg); width: 89px; height: 23px; }
+  &__veljko { -webkit-mask-image: url(../static/veljko.svg); width: 46px; height: 24px; }
+
+  &_white { background-color: $white; }
+  &_black { background-color: $black; }
+  &_coral { background-color: $coral; }
+}

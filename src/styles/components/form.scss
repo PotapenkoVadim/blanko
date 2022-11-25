@@ -1,0 +1,11 @@
+.form { background-color: $white; padding: 40px;
+  &__title { margin: 0 0 40px; font-size: 2rem; }
+  &__control { margin: 16px 0; }
+  &__label { display: block; margin-bottom: 5px; }
+  &__field { padding: 20px 35px; background-color: $easy-dark; width: calc(100% - 70px); border-radius: 6px; outline: none; border: none; }
+  &__checkbox { margin: 32px 0; }
+  &__text { margin-top: 16px; text-align: center; }
+  &__link { color: $coral; }
+
+  @media (max-width: $mobile) { padding: 25px 15px; }
+}
