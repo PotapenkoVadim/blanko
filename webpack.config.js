@@ -16,12 +16,15 @@ module.exports = (env, argv) => {
       port: 3000,
       open: true
     },
-    entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'app.js')],
+    entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'app.ts')],
     output: {
       path: path.resolve(__dirname, 'dist'),
       clean: true,
       filename: devMode ? '[name].js' : '[name].[contenthash].js',
       assetModuleFilename: devMode ? 'assets/[name][ext]' : 'assets/[hash][ext]'
+    },
+    resolve: {
+      extensions: [ '.tsx', '.ts', '.js' ],
     },
     plugins: [
       new HtmlWebpackplugin({
@@ -86,6 +89,11 @@ module.exports = (env, argv) => {
               presets: ['@babel/preset-env']
             }
           }
+        },
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
         }
       ]
     }
