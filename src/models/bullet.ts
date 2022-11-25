@@ -1,22 +1,21 @@
-import { IGallery } from '../interface';
+import { IBaseHTMLElement, IGallery } from '../interface';
 import { IBullet } from '../interface/bullet';
-import { BaseHTMLElement } from './base-html-element';
 
-export class Bullet extends BaseHTMLElement implements IBullet {
+export class Bullet implements IBullet {
+  bulletNode: IBaseHTMLElement = null;
   gallery: IGallery = null;
 
-  constructor(id: string, galleryElement: IGallery) {
-    super(id);
-    
+  constructor(bullet: IBaseHTMLElement, galleryElement: IGallery) {
+    this.bulletNode = bullet;
     this.gallery = galleryElement;
   }
 
   get bulletIndex() {
-    return Number(this.element.dataset.index);
+    return Number(this.bulletNode.element.dataset.index);
   }
 
   handleBulletClick() {
-    return this.handleClick(() => {
+    return this.bulletNode.handleClick(() => {
       this.gallery.slide(this.bulletIndex);
     });
   }

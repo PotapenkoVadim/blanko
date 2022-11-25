@@ -1,7 +1,7 @@
 import { htmlEventFn } from '../types';
 
 export interface IBaseHTMLElement {
-  readonly element: HTMLElement;
+  element: HTMLElement;
   handleClick: (callback: htmlEventFn<MouseEvent>) => void;
   toggleClassStyle: (classStyle: string) => boolean;
   removeClassStyle: (classStyle: string) => void;

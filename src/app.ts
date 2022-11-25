@@ -1,21 +1,33 @@
 import './index.html';
 import './styles/main.scss';
-import { BaseHTMLElement, Gallery, Bullet } from './models';
+import { Gallery, Bullet } from './models';
 import { debounce } from './helpers';
+import { DOMService } from './services/dom-service';
+import { ElementMarkerVariant } from './enums/element-marker-variant';
 
 /* ### Burger menu ### */
-const burgerMenu = new BaseHTMLElement('burgerMenu');
-const closeMenu = new BaseHTMLElement('closeMenu');
-const headerList = new BaseHTMLElement('headerList');
+const burgerMenu = DOMService.getElement('burgerMenu', ElementMarkerVariant.ID);
+const closeMenu = DOMService.getElement('closeMenu', ElementMarkerVariant.ID);
+const headerListSidebar = DOMService.getElement('headerList', ElementMarkerVariant.ID);
+const headerLinks = DOMService.getElements('header__item', ElementMarkerVariant.CLASS_NAME);
 
-burgerMenu.handleClick(() => headerList.toggleClassStyle('header__list-visible'));
-closeMenu.handleClick(() => headerList.removeClassStyle('header__list-visible'));
+const removeHeaderListActiveClass = () => headerListSidebar.removeClassStyle('header__list-visible');
+const toggleHeaderListActiveClass = () => headerListSidebar.toggleClassStyle('header__list-visible');
+
+burgerMenu.handleClick(toggleHeaderListActiveClass);
+closeMenu.handleClick(removeHeaderListActiveClass);
+headerLinks.map((headerListItem) => headerListItem.handleClick(removeHeaderListActiveClass));
 
 /* ### Gallery ### */
 const GALLERY_TIME_DELAY = 12500;
-const gallery = new Gallery('gallery');
-const rightBullet = new Bullet('rightBullet', gallery);
-const leftBullet = new Bullet('leftBullet', gallery);
+const galleryNode = DOMService.getElement('gallery', ElementMarkerVariant.ID);
+const sliderNode = DOMService.getElement('slider', ElementMarkerVariant.ID);
+const rightBulletNode = DOMService.getElement('rightBullet', ElementMarkerVariant.ID);
+const leftBulletNode = DOMService.getElement('leftBullet', ElementMarkerVariant.ID);
+
+const gallery = new Gallery(galleryNode, sliderNode);
+const rightBullet = new Bullet(rightBulletNode, gallery);
+const leftBullet = new Bullet(leftBulletNode, gallery);
 
 rightBullet.handleBulletClick();
 leftBullet.handleBulletClick();

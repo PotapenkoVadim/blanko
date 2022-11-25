@@ -1,7 +1,9 @@
 import { IBaseHTMLElement } from './base-html-element';
+import { IGallery } from './gallery';
 
 export interface IBullet {
-  gallery: IBaseHTMLElement;
+  bulletNode: IBaseHTMLElement;
+  gallery: IGallery;
   readonly bulletIndex: number;
   handleBulletClick: () => void;
 }

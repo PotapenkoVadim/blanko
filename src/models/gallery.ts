@@ -1,14 +1,13 @@
 import { IBaseHTMLElement, IGallery } from '../interface';
-import { BaseHTMLElement } from './base-html-element';
 
-export class Gallery extends BaseHTMLElement implements IGallery {
+export class Gallery implements IGallery {
   _index = 0;
+  gallery: IBaseHTMLElement = null;
   slider: IBaseHTMLElement = null;
 
-  constructor(id: string) {
-    super(id);
-
-    this.slider = new BaseHTMLElement('slider');
+  constructor(gallery: IBaseHTMLElement, slider: IBaseHTMLElement) {
+    this.gallery = gallery;
+    this.slider = slider;
   }
 
   get sliderWidth() {
@@ -24,6 +23,6 @@ export class Gallery extends BaseHTMLElement implements IGallery {
   slide(number?: number) {
     const index = this.calculateIndex(number);
 
-    this.setStyle('transform', `translateX(${this.sliderWidth * index * -1}px)`);
+    this.gallery.setStyle('transform', `translateX(${this.sliderWidth * index * -1}px)`);
   }
 }
