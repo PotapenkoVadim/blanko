@@ -5,5 +5,5 @@ export interface IBaseHTMLElement {
   handleClick: (callback: htmlEventFn<MouseEvent>) => void;
   toggleClassStyle: (classStyle: string) => boolean;
   removeClassStyle: (classStyle: string) => void;
-  setStyle: (key: any, value: string) => void;
+  setStyle: (key: string, value: string) => void;
 }

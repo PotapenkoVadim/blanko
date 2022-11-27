@@ -10,19 +10,22 @@ export class Gallery implements IGallery {
     this.slider = slider;
   }
 
-  get sliderWidth() {
+  get sliderWidth(): number {
     return this.slider.element.clientWidth;
   }
 
-  calculateIndex(number: number) {
+  calculateIndex(number: number): number {
     this._index = number ? number : 1 - this._index;
 
     return this._index;
   }
 
-  slide(number?: number) {
+  slide(number?: number): void {
     const index = this.calculateIndex(number);
 
-    this.gallery.setStyle('transform', `translateX(${this.sliderWidth * index * -1}px)`);
+    this.gallery.setStyle(
+      'transform',
+      `translateX(${this.sliderWidth * index * -1}px)`
+    );
   }
 }

@@ -16,15 +16,18 @@ export class BaseHTMLElement implements IBaseHTMLElement {
     }
   }
 
-  toggleClassStyle(classStyle: string) {
+  toggleClassStyle(classStyle: string): boolean {
     return this.element && this.element.classList.toggle(classStyle);
   }
 
-  removeClassStyle(classStyle: string) {
+  removeClassStyle(classStyle: string): void {
     return this.element && this.element.classList.remove(classStyle);
   }
 
-  setStyle(key: any, value: string) {
-    return this.element.style[key] = value;
+  setStyle(
+    key: string,
+    value: string
+  ): CSSStyleDeclaration & { [x: string]: string } {
+    return Object.assign(this.element.style, { [key]: value });
   }
 }

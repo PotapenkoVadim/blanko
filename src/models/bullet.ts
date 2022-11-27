@@ -10,11 +10,11 @@ export class Bullet implements IBullet {
     this.gallery = galleryElement;
   }
 
-  get bulletIndex() {
+  get bulletIndex(): number {
     return Number(this.bulletNode.element.dataset.index);
   }
 
-  handleBulletClick() {
+  handleBulletClick(): void {
     return this.bulletNode.handleClick(() => {
       this.gallery.slide(this.bulletIndex);
     });
