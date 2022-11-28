@@ -3,14 +3,20 @@ import './styles/main.scss';
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { App } from './app';
+import { Provider } from 'react-redux';
+import { store } from './react-snippet/store';
+import { App } from './react-snippet/app';
 import { Gallery, Bullet } from './models';
 import { debounce } from './helpers';
 import { DOMService } from './services/dom-service';
-import { ElementMarkerVariant } from './enums/element-marker-variant';
+import { ElementMarkerVariant } from './enums';
 
 const root = createRoot(document.querySelector('#app'));
-root.render(<App />);
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
 
 /* ### Burger menu ### */
 const burgerMenu = DOMService.getElement('burgerMenu', ElementMarkerVariant.ID);

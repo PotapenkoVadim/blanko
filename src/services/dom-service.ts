@@ -1,4 +1,4 @@
-import { ElementMarkerVariant } from '../enums/element-marker-variant';
+import { ElementMarkerVariant } from '../enums';
 import { IBaseHTMLElement } from '../interface';
 import { BaseHTMLElement } from '../models';
 

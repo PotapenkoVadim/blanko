@@ -1,0 +1,10 @@
+@import '../../../styles/variables.scss';
+
+.counter { padding: 50px 15px 15px;
+  &_title { text-align: center; font-size: 1.3rem; font-weight: bold; }
+  &_actions { margin: 15px 0; display: flex; gap: 8px; justify-content: center; }
+
+  @media (max-width: $mobile) { padding: 25% 0;
+    &_actions { flex-direction: column; padding: 0 8px; margin: 25px 0; }
+  }
+}
