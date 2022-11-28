@@ -6,7 +6,7 @@ module.exports = (env, argv) => {
   const mode = argv.mode || 'development';
   const devMode = mode === 'development';
   const target = devMode ? 'web' : 'browserslist';
-  const devtool = devMode ? 'source-map' : undefined;
+  const devtool = devMode ? 'source-map' : false;
 
   return {
     mode,
