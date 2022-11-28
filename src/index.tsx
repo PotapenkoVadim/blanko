@@ -1,9 +1,16 @@
 import './index.html';
 import './styles/main.scss';
+
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { App } from './app';
 import { Gallery, Bullet } from './models';
 import { debounce } from './helpers';
 import { DOMService } from './services/dom-service';
 import { ElementMarkerVariant } from './enums/element-marker-variant';
+
+const root = createRoot(document.querySelector('#app'));
+root.render(<App />);
 
 /* ### Burger menu ### */
 const burgerMenu = DOMService.getElement('burgerMenu', ElementMarkerVariant.ID);

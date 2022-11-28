@@ -16,7 +16,7 @@ module.exports = (env, argv) => {
       port: 3000,
       open: true
     },
-    entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'app.ts')],
+    entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.tsx')],
     output: {
       path: path.resolve(__dirname, 'dist'),
       clean: true,
@@ -24,7 +24,7 @@ module.exports = (env, argv) => {
       assetModuleFilename: devMode ? 'assets/[name][ext]' : 'assets/[hash][ext]'
     },
     resolve: {
-      extensions: [ '.tsx', '.ts', '.js' ],
+      extensions: [ '.tsx', '.ts', '.jsx', '.js' ],
     },
     plugins: [
       new HtmlWebpackplugin({
@@ -41,10 +41,39 @@ module.exports = (env, argv) => {
           loader: 'html-loader'
         },
         {
-          test: /\.(c|sa|sc)ss$/i,
+          test: /\.module.(c|sa|sc)ss$/,
           use: [
-            devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-            'css-loader',
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+                modules: {
+                  localIdentName: '[local]__[sha1:hash:hex:7]'
+                }
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [require('postcss-preset-env')]
+                }
+              }
+            },
+            'sass-loader'
+          ]
+        },
+        {
+          test: /^((?!\.module).)*(c|sa|sc)ss$/i,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+              }
+            },
             {
               loader: 'postcss-loader',
               options: {
@@ -81,21 +110,38 @@ module.exports = (env, argv) => {
           type: 'asset/resource'
         },
         {
-          test: /\.m?js$/i,
+          test: /\.tsx?$/i,
           exclude: /(node_modules|bower_components)/,
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
+              presets: [
+                '@babel/preset-react',
+                '@babel/preset-typescript'
+              ]
             }
           }
-        },
-        {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
-          exclude: /node_modules/,
         }
       ]
+    },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          vendors: {
+            name: `chunk-vendors`,
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+            chunks: 'initial',
+          },
+          common: {
+            name: `chunk-common`,
+            minChunks: 2,
+            priority: -20,
+            chunks: 'initial',
+            reuseExistingChunk: true
+          }
+        }
+      }
     }
   }
 }
