@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackplugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = (env, argv) => {
   const mode = argv.mode || 'development';
@@ -16,7 +17,7 @@ module.exports = (env, argv) => {
       port: 3000,
       open: true
     },
-    entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'app.ts')],
+    entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.ts')],
     output: {
       path: path.resolve(__dirname, 'dist'),
       clean: true,
@@ -24,18 +25,23 @@ module.exports = (env, argv) => {
       assetModuleFilename: devMode ? 'assets/[name][ext]' : 'assets/[hash][ext]'
     },
     resolve: {
-      extensions: [ '.tsx', '.ts', '.js' ],
+      extensions: [ '.tsx', '.ts', '.js', '.vue' ],
     },
     plugins: [
       new HtmlWebpackplugin({
         template: path.resolve(__dirname, 'src', 'index.html')
       }),
+      new VueLoaderPlugin(),
       new MiniCssExtractPlugin({
         filename: devMode ? '[name].css' : '[name].[contenthash].css'
       })
     ],
     module: {
       rules: [
+        {
+          test: /\.vue$/i,
+          loader: 'vue-loader'
+        },
         {
           test: /\.html$/i,
           loader: 'html-loader'
@@ -91,9 +97,17 @@ module.exports = (env, argv) => {
           }
         },
         {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
+          test: /\.ts$/i,
           exclude: /node_modules/,
+          use: [
+            {
+              loader: 'ts-loader',
+              options: {
+                configFile: path.resolve(__dirname, './tsconfig.json'),
+                appendTsSuffixTo: [/\.vue$/i]
+              }
+            }
+          ]
         }
       ]
     }

@@ -1,9 +1,13 @@
 import './index.html';
 import './styles/main.scss';
+import { createApp } from 'vue';
+import App from './app.vue';
 import { Gallery, Bullet } from './models';
 import { debounce } from './helpers';
 import { DOMService } from './services/dom-service';
 import { ElementMarkerVariant } from './enums/element-marker-variant';
+
+createApp(App).mount('#app');
 
 /* ### Burger menu ### */
 const burgerMenu = DOMService.getElement('burgerMenu', ElementMarkerVariant.ID);
