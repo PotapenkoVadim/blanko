@@ -1,7 +1,7 @@
 import './index.html';
 import './styles/main.scss';
 import { createApp } from 'vue';
-import App from './app.vue';
+import App from './vue-snippet/app.vue';
 import { Gallery, Bullet } from './models';
 import { debounce } from './helpers';
 import { DOMService } from './services/dom-service';
